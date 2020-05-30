@@ -24,6 +24,12 @@ update_configs:
     target_branch: "master"
     default_assignees:
       - "kojiro-yamashiro"
+    allowed_updates:
+      - match:
+          update_type: "all"
+    ignored_updates:
+          - match:
+              dependency_name: "ruby"
 
 # https://dev.classmethod.jp/articles/dependabot-101/
 # https://gitlab.com/connorshea/vglist/-/blob/master/.dependabot/config.yml
