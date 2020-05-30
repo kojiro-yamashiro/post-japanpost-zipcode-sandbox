@@ -19,6 +19,10 @@ update_configs:
     allowed_updates:
       - match:
           update_type: "all"
+    ignored_updates:
+          - match:
+              dependency_name: "sprockets"
+
   # Checks for Dockerfile updates weekly.
   # Dependabot will automatically detect any files with "Dockerfile" in the name.
   - package_manager: "docker"
