@@ -1,5 +1,3 @@
-# https://dev.classmethod.jp/articles/dependabot-101/
-# https://gitlab.com/connorshea/vglist/-/blob/master/.dependabot/config.yml
 version: 1
 update_configs:
   - package_manager: "ruby:bundler"
@@ -29,3 +27,6 @@ update_configs:
     target_branch: "master"
     default_assignees:
       - "kojiro-yamashiro"
+
+# https://dev.classmethod.jp/articles/dependabot-101/
+# https://gitlab.com/connorshea/vglist/-/blob/master/.dependabot/config.yml
