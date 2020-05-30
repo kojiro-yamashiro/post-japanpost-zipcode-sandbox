@@ -1,0 +1,11 @@
+exclude:
+  - ActiveRecord::InternalMetadata
+  - ActiveRecord::SchemaMigration
+attributes:
+  - content
+  - foreign_key
+  - primary_key
+  - inheritance
+filename: erd
+filetype: svg
+title: post-japanpost-zipcode-erd

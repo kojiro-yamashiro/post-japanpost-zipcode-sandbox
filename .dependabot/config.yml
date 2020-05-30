@@ -1,0 +1,31 @@
+# https://dev.classmethod.jp/articles/dependabot-101/
+# https://gitlab.com/connorshea/vglist/-/blob/master/.dependabot/config.yml
+version: 1
+update_configs:
+  - package_manager: "ruby:bundler"
+    directory: "/"
+    update_schedule: "weekly"
+    target_branch: "master"
+    version_requirement_updates: "auto"
+    default_assignees:
+      - "kojiro-yamashiro"
+    # Automerge minor-level updates automatically (if tests pass).
+    automerged_updates:
+      - match:
+          dependency_type: "development"
+          update_type: "semver:minor"
+      - match:
+          dependency_type: "production"
+          update_type: "semver:minor"
+    # Allow all direct and indirect dependencies to be updated.
+    allowed_updates:
+      - match:
+          update_type: "all"
+  # Checks for Dockerfile updates weekly.
+  # Dependabot will automatically detect any files with "Dockerfile" in the name.
+  - package_manager: "docker"
+    directory: "/"
+    update_schedule: "weekly"
+    target_branch: "master"
+    default_assignees:
+      - "kojiro-yamashiro"
