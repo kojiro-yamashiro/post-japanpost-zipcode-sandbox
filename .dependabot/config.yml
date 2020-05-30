@@ -8,10 +8,10 @@ update_configs:
     default_assignees:
       - "kojiro-yamashiro"
     # Automerge minor-level updates automatically (if tests pass).
-    # automerged_updates:
-    #   - match:
-    #       dependency_type: "development"
-    #       update_type: "semver:minor"
+    automerged_updates:
+      - match:
+          dependency_type: "development"
+          update_type: "semver:minor"
     #   - match:
     #       dependency_type: "production"
     #       update_type: "semver:minor"
