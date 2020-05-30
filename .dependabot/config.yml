@@ -21,12 +21,12 @@ update_configs:
           update_type: "all"
   # Checks for Dockerfile updates weekly.
   # Dependabot will automatically detect any files with "Dockerfile" in the name.
-  - package_manager: "docker"
-    directory: "/"
-    update_schedule: "weekly"
-    target_branch: "master"
-    default_assignees:
-      - "kojiro-yamashiro"
+  # - package_manager: "docker"
+  #   directory: "/"
+  #   update_schedule: "weekly"
+  #   target_branch: "master"
+  #   default_assignees:
+  #     - "kojiro-yamashiro"
 
 # https://dev.classmethod.jp/articles/dependabot-101/
 # https://gitlab.com/connorshea/vglist/-/blob/master/.dependabot/config.yml
