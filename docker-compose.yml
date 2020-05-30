@@ -1,0 +1,54 @@
+version: '3.3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    volumes:
+      - ./public:/usr/share/nginx/public:cached
+      - ./log/nginx:/var/log/nginx
+    ports:
+      - 80:80
+    depends_on:
+      - app
+  app:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/app:cached
+    ports:
+      - 3000:3000
+    depends_on:
+      - database
+    tty: true
+    stdin_open: true
+    environment:
+      RAILS_HOST: database
+      WEBPACKER_DEV_SERVER_HOST: webpacker
+  webpacker:
+    build: .
+    command: ./bin/webpack-dev-server
+    volumes:
+      - .:/webpacker-example-app
+    ports:
+      - '3035:3035'
+    tty: true
+    stdin_open: true
+    environment:
+      - NODE_ENV=development
+      - RAILS_ENV=development
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+    depends_on:
+      - app
+  database:
+    build:
+      context: .
+      dockerfile: ./docker/mysql/Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: post_japanpost_zipcode_sandbox_development
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./log/mysql:/var/log/mysql
